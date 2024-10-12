@@ -230,8 +230,7 @@ You can see an example of the Circuit Breaker state machine in the
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use core::fmt;
-#[cfg(feature = "std")]
-use std::error::Error;
+use core::error::Error;
 
 #[cfg(feature = "dsl")]
 pub use rust_fsm_dsl::state_machine;
@@ -332,7 +331,6 @@ impl fmt::Display for TransitionImpossibleError {
     }
 }
 
-#[cfg(feature = "std")]
 impl Error for TransitionImpossibleError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         None
